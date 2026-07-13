@@ -1,25 +1,19 @@
-"""
-This script runs the application using a development server.
-It contains the definition of routes and views for the application.
-"""
-
 from flask import Flask
-app = Flask(__name__)
-
-# Make the WSGI interface available at the top level so wfastcgi can get it.
-wsgi_app = app.wsgi_app
+from routes.health_routes import health_bp
+from routes.sync_routes import sync_bp
 
 
-@app.route('/')
-def hello():
-    """Renders a sample page."""
-    return "Hello World!"
+def create_app():
+    app = Flask(__name__)
 
-if __name__ == '__main__':
-    import os
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
-    try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
-    except ValueError:
-        PORT = 5555
-    app.run(HOST, PORT)
+    app.register_blueprint(health_bp, url_prefix="/api")
+    app.register_blueprint(sync_bp, url_prefix="/api/sync")
+
+    return app
+
+
+app = create_app()
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
