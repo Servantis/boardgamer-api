@@ -34,11 +34,12 @@
     <Compile Include="routes\__init__.py" />
     <Compile Include="scripts\init_db.py" />
     <Compile Include="services\database_service.py" />
+    <Compile Include="services\sync_service.py" />
     <Compile Include="services\__init__.py" />
     <Compile Include="wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".env.example" />
+    <Content Include=".env" />
     <Content Include="database\boardgamer.db" />
     <Content Include="database\schema.sql" />
     <Content Include="requirements.txt" />

@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
 from flask import Flask
+
 from routes.health_routes import health_bp
 from routes.sync_routes import sync_bp
+
+
+load_dotenv()
 
 
 def create_app():
