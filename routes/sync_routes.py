@@ -14,9 +14,16 @@ def _is_authorized() -> bool:
     if not expected_api_key:
         return False
 
-    provided_api_key = request.headers.get("X-Api-Key")
+    provided_api_key = (
+        request.headers.get("X-Api-Key")
+        or request.headers.get("X-API-Key")
+        or request.headers.get("x-api-key")
+    )
 
-    return provided_api_key == expected_api_key
+    if not provided_api_key:
+        return False
+
+    return provided_api_key.strip() == expected_api_key.strip()
 
 
 @sync_bp.before_request
