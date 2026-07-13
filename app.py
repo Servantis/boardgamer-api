@@ -1,11 +1,17 @@
+from pathlib import Path
+
 from dotenv import load_dotenv
 from flask import Flask
 
+
+BASE_DIR = Path(__file__).resolve().parent
+ENV_PATH = BASE_DIR / ".env"
+
+load_dotenv(dotenv_path=ENV_PATH, override=True)
+
+
 from routes.health_routes import health_bp
 from routes.sync_routes import sync_bp
-
-
-load_dotenv()
 
 
 def create_app():

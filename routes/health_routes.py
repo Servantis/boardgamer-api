@@ -1,3 +1,4 @@
+import os
 from flask import Blueprint, jsonify
 
 from services.database_service import fetch_one, get_database_path
@@ -19,9 +20,13 @@ def health():
         database_error = str(exception)
         player_count = None
 
+    api_key = os.environ.get("BOARDGAMER_API_KEY")
+
     return jsonify({
         "status": "ok",
         "service": "boardgamer-api",
+        "api_key_configured": bool(api_key),
+        "api_key_length": len(api_key) if api_key else 0,
         "database": {
             "ok": database_ok,
             "path": str(get_database_path()),
