@@ -32,11 +32,15 @@
     <Compile Include="routes\health_routes.py" />
     <Compile Include="routes\sync_routes.py" />
     <Compile Include="routes\__init__.py" />
+    <Compile Include="scripts\init_db.py" />
+    <Compile Include="services\database_service.py" />
     <Compile Include="services\__init__.py" />
     <Compile Include="wsgi.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env.example" />
+    <Content Include="database\boardgamer.db" />
+    <Content Include="database\schema.sql" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +55,8 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="database\" />
+    <Folder Include="scripts\" />
     <Folder Include="services\" />
     <Folder Include="routes\" />
   </ItemGroup>
