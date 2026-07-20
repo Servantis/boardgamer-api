@@ -30,10 +30,13 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="routes\health_routes.py" />
+    <Compile Include="routes\message_routes.py" />
     <Compile Include="routes\sync_routes.py" />
     <Compile Include="routes\__init__.py" />
     <Compile Include="scripts\init_db.py" />
     <Compile Include="services\database_service.py" />
+    <Compile Include="services\group_message_service.py" />
+    <Compile Include="services\mailtrap_service.py" />
     <Compile Include="services\sync_service.py" />
     <Compile Include="services\__init__.py" />
     <Compile Include="wsgi.py" />

@@ -9,7 +9,7 @@ ENV_PATH = BASE_DIR / ".env"
 
 load_dotenv(dotenv_path=ENV_PATH, override=True)
 
-
+from routes.message_routes import message_bp
 from routes.health_routes import health_bp
 from routes.sync_routes import sync_bp
 
@@ -19,6 +19,7 @@ def create_app():
 
     app.register_blueprint(health_bp, url_prefix="/api")
     app.register_blueprint(sync_bp, url_prefix="/api/sync")
+    app.register_blueprint(message_bp, url_prefix="/api/messages")
 
     return app
 
